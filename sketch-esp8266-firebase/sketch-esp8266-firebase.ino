@@ -2,13 +2,17 @@
 #include <FirebaseArduino.h>
 
 // Set these to run example.
-#define FIREBASE_HOST "example.firebaseio.com"
-#define FIREBASE_AUTH "token_or_secret"
-#define WIFI_SSID "SSID"
-#define WIFI_PASSWORD "PASSWORD"
+#define FIREBASE_HOST "test123456-bf0b8.firebaseio.com"
+#define FIREBASE_AUTH "rh9IQPQqOniyN4SYR2zwdF5iSd1reKg09JZarG1W"
+#define WIFI_SSID "Emcali_1686"
+#define WIFI_PASSWORD "4486932879"
+
+String statusLed = "off";
 
 void setup() {
   Serial.begin(9600);
+
+  pinMode(2, OUTPUT);
 
   // connect to wifi.
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
@@ -50,6 +54,14 @@ void loop() {
   // get value 
   Serial.print("number: ");
   Serial.println(Firebase.getFloat("number"));
+  statusLed = Firebase.getString("statusLed");
+  if(statusLed == "off"){
+    //apague el led
+    digitalWrite(2, LOW);
+  }else if(statusLed == "on"){
+    //encienda el led
+    digitalWrite(2, HIGH);
+  }
   delay(1000);
 
   // remove value

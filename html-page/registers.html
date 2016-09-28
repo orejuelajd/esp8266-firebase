@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="DemoApp">
+<head>
+  <!-- basic configurations -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <!-- Libraries and modules needed to normal operation of the webapp-->
+  <script src="http://code.angularjs.org/1.2.6/angular.min.js"></script>
+
+  <!-- Imports of the scripts to operation of firebase with angularjs-->
+  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+
+  <!-- Javascript script in charge of the capture of firebase data, then this script
+  store the data in a scope array ($scope.registros)-->
+  <script type="text/javascript">
+
+  // We create the angular module and import de firebase module
+  var myApp = angular.module('DemoApp', ['firebase']);
+
+  // URL database of our firebase project
+  var urlDataBase = "https://example.firebaseio.com/";
+  function DemoCtrl($scope, $firebase) {
+
+    // We obtain the file registers.json stored in firebase database
+    $scope.firebaseRef = new Firebase(urlDataBase + "registers");
+
+    // The registers of registers.json are stored in array $scope.registers.
+    $scope.registers = $firebase($scope.firebaseRef);
+  }
+  </script>
+</head>
+
+<body class="container">
+  <h2>Arduino YUN, Firebase and CURL</h2>
+  <div ng-controller="DemoCtrl"
+  class="form-inline panel panel-default">
+  <div class="panel-body">
+    <ul ng-repeat="register in registers">
+      <li><h3>{{register}}</h3></li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

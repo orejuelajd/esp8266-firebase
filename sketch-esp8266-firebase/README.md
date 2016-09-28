@@ -2,7 +2,7 @@ esp8266-firebase
 ==================
 Proyecto en el cual se envian datos desde un esp8266 a una base de datos en firebase.
 
-PROGRAMAR ESP-8266 con el IDE de arduino
+Preparando el esp-8266 y el IDE de arduino para que trabajen juntos
 ========================================
 
 Cabe resaltar que para este proyecto el módulo esp se utilizó como un arduino y no como un módulo propiamente, lo que quiere decir que el módulo se programa con el IDE de arduino.

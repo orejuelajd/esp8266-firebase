@@ -3,8 +3,7 @@ esp8266-firebase
 Proyecto en el cual se envian datos desde un esp8266 a una base de datos en firebase.
 
 Preparando el esp-8266 y el IDE de arduino para que trabajen juntos
-========================================
-
+==================
 Cabe resaltar que para este proyecto el módulo esp se utilizó como un arduino y no como un módulo propiamente, lo que quiere decir que el módulo se programa con el IDE de arduino.
 
 ## Conexiones
@@ -41,4 +40,4 @@ El ESP8266 se conoce normalmente como un módulo para Arduino que funciona para 
 
 ![Seleccionar el puerto COM para tu FTDI ó Cable USB-serial](https://bytebucket.org/orejuelajd/elias-expin-repo/raw/b524d8c7ea74f82a9a610fa33f948fce2b7015cb/sistema-movimiento/programacion-esp8266/archivos/07.png?token=175f2562de60356d46b49b9c68347ee478b3266b)
 
-# Ya con estos pasos, el ESP8266 esta listo para que por medio del convertidor serial-usb se le puedan subir skecth desde el ide arduino (¡Como programar un arduino cualquiera!) :D
+##### Ya con estos pasos, el ESP8266 esta listo para que por medio del convertidor serial-usb se le puedan subir skecth desde el ide arduino (¡Como programar un arduino cualquiera!) :D

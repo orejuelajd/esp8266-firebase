@@ -54,13 +54,13 @@ void loop() {
   // get value 
   Serial.print("number: ");
   Serial.println(Firebase.getFloat("number"));
-  statusLed = Firebase.getString("statusLed");
-  if(statusLed == "off"){
-    //apague el led
-    digitalWrite(2, LOW);
-  }else if(statusLed == "on"){
-    //encienda el led
+  statusLed = Firebase.getBool("statusLed");
+  if(statusLed){
+    //enciende el led
     digitalWrite(2, HIGH);
+  }else{
+    //apaga el led
+    digitalWrite(2, LOW);
   }
   delay(1000);
 

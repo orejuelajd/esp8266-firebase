@@ -20,15 +20,36 @@
   var myApp = angular.module('DemoApp', ['firebase']);
 
   // URL database of our firebase project
-  var urlDataBase = "https://example.firebaseio.com/";
+  var urlDataBase = "https://test123456-bf0b8.firebaseio.com/";
   function DemoCtrl($scope, $firebase) {
 
     // We obtain the file registers.json stored in firebase database
-    $scope.firebaseRef = new Firebase(urlDataBase + "registers");
+    $scope.firebaseRef = new Firebase(urlDataBase + "logs");
 
     // The registers of registers.json are stored in array $scope.registers.
     $scope.registers = $firebase($scope.firebaseRef);
+
+    $scope.ledOn = function(){
+     $scope.firebaseLed = new Firebase(urlDataBase + "statusLed");
+     var statusLed;
+	$scope.firebaseLed.on("value", function(snapshot) {
+	  statusLed = snapshot.val();
+	  console.log("valor de statusLed:" + statusLed);
+	}, function (errorObject) {
+	  console.log("The read failed: " + errorObject.code);
+	});
+     $scope.firebaseLed.set(!statusLed);
+     //$scope.firebaseLed.set(!$scope.firebaseLed);
+     //console.log($scope.firebaseLed.value());
+    }
+
+    $scope.ledOff = function(){
+     $scope.firebaseLed = new Firebase(urlDataBase + "statusLed");
+     $scope.firebaseLed.set(false);
+    }
   }
+
+   
   </script>
 </head>
 
@@ -37,6 +58,8 @@
   <div ng-controller="DemoCtrl"
   class="form-inline panel panel-default">
   <div class="panel-body">
+	<button ng-click="ledOn()" value="On">On/Off Led</button>
+	<button ng-click="ledOff()" value="Off">Off</button>
     <ul ng-repeat="register in registers">
       <li><h3>{{register}}</h3></li>
     </ul>

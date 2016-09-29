@@ -12,7 +12,7 @@ El ESP8266 se conoce normalmente como un módulo para Arduino que funciona para 
 
 ![Conexiones entre esp8266 y convertidor usb-serial](https://raw.githubusercontent.com/orejuelajd/esp8266-firebase/master/sketch-esp8266-firebase/connections/connections.png)
 
-**IMPORTANTE:** Conectar el GPIO0 a GND solo para reprogramar el firmware del esp8266 (cuando le vaya a subir algun skecth). Cuando ya este subido el skecth en el ESP8266 y funcione, se debe desconectar de la fuente de alimentación (desconectar el USB del convertidor) y volverlo a conectar para encender de nuevo el ESP8266 pero con el GPIO0 desconectado de GND, ya que si se vuelve a encender y el GPIO0 sigue conectado a GND, el skecth se borra del ESP8266, ya que el módulo se reinicia nuevamente.
+**IMPORTANTE:** Conectar el GPIO0 a GND solo para reprogramar el firmware del esp8266 (cuando le vaya a subir algun skecth). Cuando ya este subido el skecth en el ESP8266 y funcione, se debe desconectar de la fuente de alimentación (desconectar el USB del convertidor) y volverlo a conectar para encender de nuevo el ESP8266 pero con el GPIO0 desconectado de GND, ya que si se vuelve a encender y el GPIO0 sigue conectado a GND, el skecth se borra del ESP8266, ya que el módulo se reinicia nuevamente. Y si el GPIO2 debe estar conectado a un led o algo más, entonces mientras se carga el programa en el esp8266 tener el GPIO2 desconectado.
 
 ## Configurando el IDE de arduino
 

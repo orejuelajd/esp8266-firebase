@@ -28,28 +28,24 @@
 
     // The registers of registers.json are stored in array $scope.registers.
     $scope.registers = $firebase($scope.firebaseRef);
+    
+    // Change the boolean value to turn on or turn off the led
+    $scope.switchLed = function(){
+      $scope.firebaseLed = new Firebase(urlDataBase + "statusLed");
+      var statusLed;
+      
+      // Take a snapshot to the statusLed value
+      $scope.firebaseLed.on("value", function(snapshot) {
+        statusLed = snapshot.val();
+        console.log("valor de statusLed:" + statusLed);
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });
 
-    $scope.ledOn = function(){
-     $scope.firebaseLed = new Firebase(urlDataBase + "statusLed");
-     var statusLed;
-	$scope.firebaseLed.on("value", function(snapshot) {
-	  statusLed = snapshot.val();
-	  console.log("valor de statusLed:" + statusLed);
-	}, function (errorObject) {
-	  console.log("The read failed: " + errorObject.code);
-	});
      $scope.firebaseLed.set(!statusLed);
-     //$scope.firebaseLed.set(!$scope.firebaseLed);
-     //console.log($scope.firebaseLed.value());
-    }
-
-    $scope.ledOff = function(){
-     $scope.firebaseLed = new Firebase(urlDataBase + "statusLed");
-     $scope.firebaseLed.set(false);
     }
   }
 
-   
   </script>
 </head>
 
@@ -58,8 +54,7 @@
   <div ng-controller="DemoCtrl"
   class="form-inline panel panel-default">
   <div class="panel-body">
-	<button ng-click="ledOn()" value="On">On/Off Led</button>
-	<button ng-click="ledOff()" value="Off">Off</button>
+	<button ng-click="switchLed()" value="On">On/Off Led</button>
     <ul ng-repeat="register in registers">
       <li><h3>{{register}}</h3></li>
     </ul>

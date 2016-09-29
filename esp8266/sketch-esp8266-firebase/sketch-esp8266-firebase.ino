@@ -1,20 +1,22 @@
 #include <ESP8266WiFi.h>
 #include <FirebaseArduino.h>
 
-// Set these to run example.
-#define FIREBASE_HOST "test123456-bf0b8.firebaseio.com"
-#define FIREBASE_AUTH "rh9IQPQqOniyN4SYR2zwdF5iSd1reKg09JZarG1W"
-#define WIFI_SSID "Emcali_1686"
-#define WIFI_PASSWORD "4486932879"
-
-String statusLed = "off";
+// Configure this parameters to run the sketch
+#define FIREBASE_HOST "urldatabase.firebaseio.com"
+#define FIREBASE_AUTH "token_or_secret"
+#define WIFI_SSID "WiFi_name"
+#define WIFI_PASSWORD "WiFi_password"
+#define pinLed 2
 
 void setup() {
+
+  // Initialize the Serial
   Serial.begin(9600);
 
-  pinMode(2, OUTPUT);
+  // Adjust pinLed as output pin
+  pinMode(pinLed, OUTPUT);
 
-  // connect to wifi.
+  // Connect to wifi.
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("connecting");
   while (WiFi.status() != WL_CONNECTED) {
@@ -25,12 +27,24 @@ void setup() {
   Serial.print("connected: ");
   Serial.println(WiFi.localIP());
   
+  // Connect to firebase
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
 }
 
 int n = 0;
+boolean statusLed = false;
 
 void loop() {
+
+  // get led status
+  statusLed = Firebase.getBool("statusLed");
+  if(statusLed){
+    digitalWrite(pinLed, HIGH); // turn on the led
+  }else{
+    digitalWrite(pinLed, LOW); // turn off the led
+  }
+  delay(1000);
+
   // set value
   Firebase.setFloat("number", 42.0);
   // handle error
@@ -54,15 +68,6 @@ void loop() {
   // get value 
   Serial.print("number: ");
   Serial.println(Firebase.getFloat("number"));
-  statusLed = Firebase.getBool("statusLed");
-  if(statusLed){
-    //enciende el led
-    digitalWrite(2, HIGH);
-  }else{
-    //apaga el led
-    digitalWrite(2, LOW);
-  }
-  delay(1000);
 
   // remove value
   Firebase.remove("number");

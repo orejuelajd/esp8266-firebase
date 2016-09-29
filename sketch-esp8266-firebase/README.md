@@ -56,3 +56,9 @@ Ya con estos pasos el ESP8266 esta listo para que por medio del convertidor seri
 * Click en el piñon o rueda de configuración
 * Click en configuración del proyecto
 * Click en la pestaña base de datos
+
+## Instalar librerias necesarias
+
+En la carpeta `/arduino-libraries` se encuentran las librerias necesarias que se deben copiar y pegar en la carpeta asignada por el ide arduino para almacenar sus librerias.
+
+* Libreria de firebase para arduino: https://github.com/googlesamples/firebase-arduino/

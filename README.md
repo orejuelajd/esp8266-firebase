@@ -25,6 +25,10 @@ Proyecto para conectar un esp8266 a firebase para el primer meetup de ingenierí
 ## Fuentes:
 
 * Repositorio sobre esp8266: https://github.com/esp8266/Arduino/blob/master/doc/reference.md#digital-io
+* Librería de Firebase para Arduino: https://github.com/googlesamples/firebase-arduino
+* Como crear la base de datos en firebase: https://www.youtube.com/watch?v=bWH2Wc_p4HU
+* Más información del Rest API con Curl de Firebase: https://www.firebase.com/docs/rest/api/  
+* Arduino Yun + Curl + Firebase, primeros pasos: http://www.fabiobiondi.com/blog/2014/02/arduino-yun-angularjs-and-firebase-with-curl-realtime-data/
 
 Connecting esp8266 to firebase
 ================
@@ -53,3 +57,7 @@ Project in which we send data from a esp8266 to a database in firebase.
 ## Sources:
 
 * Repository about esp8266: https://github.com/esp8266/Arduino/blob/master/doc/reference.md#digital-io
+* Firebase library for arduino: https://github.com/googlesamples/firebase-arduino
+* How create a firebase database? (in spanish): https://www.youtube.com/watch?v=bWH2Wc_p4HU
+* More information of the Firebase Rest API with Curl: https://www.firebase.com/docs/rest/api/  
+* Arduino Yun + Curl + Firebase, first steps: http://www.fabiobiondi.com/blog/2014/02/arduino-yun-angularjs-and-firebase-with-curl-realtime-data/
